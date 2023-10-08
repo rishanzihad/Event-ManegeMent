@@ -1,10 +1,19 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Header = () => {
-
+  const {user,logOut}=useContext(AuthContext)
     const links =<>
-        <NavLink to='/' className={({isActive , isPending})=> isPending? 'pending' : isActive? 'text-green-400 underline ': ''}>Home</NavLink>
+    <div className="gap-2 md:flex  flex-row">
+    <li className="text-xl"> <NavLink  to='/' className={({isActive , isPending})=> isPending? 'pending' : isActive? 'text-green-400 underline ': ''}>Home</NavLink> </li>
+    {
+       user ?<li className="text-xl"> <NavLink onClick={logOut}>LogOut</NavLink> </li> : <li className="text-xl"> <NavLink  to='/login' className={({isActive , isPending})=> isPending? 'pending' : isActive? 'text-green-400 underline ': ''}>Login</NavLink> </li>
+     }
+     
+    </div>
+
 
     </>
 
@@ -19,15 +28,17 @@ const Header = () => {
        {links}
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <a className="btn btn-ghost normal-case  text-xl">Event Management</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-     
+     {links}
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+  {
+                    user ? <button className="btn mr-3" onClick={logOut}>Log Out</button> : <button className="btn mr-3"><Link to="/login">Login</Link></button>
+     }
   </div>
 </div>
     );
