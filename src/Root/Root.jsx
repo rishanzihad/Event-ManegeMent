@@ -11,6 +11,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Register from "../Pages/Register/Register";
 import BookedPage from "../Pages/Booked/BookedPage";
+import About from "../Pages/About/About";
 
 
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
                 {
                   path:'/booked',
                   element:<PrivateRoute><BookedPage></BookedPage></PrivateRoute>
+                },
+                {
+                  path:'/about',
+                  element:<PrivateRoute><About></About></PrivateRoute>
                 },
               
                 
