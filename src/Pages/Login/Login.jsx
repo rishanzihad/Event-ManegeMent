@@ -2,19 +2,15 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import GooglelLogin from "./GoogleLogin";
 
 
 
 
 
 const Login = () => {
-    const {googleLogin,login} =useContext(AuthContext)
-    const handleLogin =()=>{
-        googleLogin()
-        .then(res=>{console.log(res) 
-            navigate(location?.state? location.state:'/')})
-        .catch(error=>console.log(error))
-    }
+    const {login} =useContext(AuthContext)
+    
     const location =useLocation()
     const navigate =useNavigate()
     const handleSignIn =e=>{
@@ -23,8 +19,6 @@ const Login = () => {
         const password =e.target.password.value
         login(email,password)
         .then(res=>{
-           
-            
           toast.success('User Log In Successfully')
           navigate(location?.state? location.state:'/')})
   
@@ -56,7 +50,9 @@ const Login = () => {
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
-          <button onClick={handleLogin} className="btn mt-2 btn-primary">Google</button>
+       
+        <GooglelLogin ></GooglelLogin>
+        
           
         </div>
       </form>

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 
 
 const ServiceDetailsCard = ({service}) => {
@@ -6,7 +5,7 @@ const ServiceDetailsCard = ({service}) => {
     return (
         <div className="card  bg-base-100 shadow-xl">
         <figure className="  pt-10">
-          <img  src={image} alt="Shoes" className="rounded-xl w-full " />
+          <img   src={image} alt="Shoes" className="rounded-xl w-full max-h-[80vh] " />
         </figure>
         <div className="card-body ">
           <h2 className="card-title text-3xl font-bold justify-center">{name}</h2>
